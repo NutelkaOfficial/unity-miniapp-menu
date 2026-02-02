@@ -1,14 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class CarouselController : MonoBehaviour
+public class CarouselController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public Image[] banners;
+    [Header("UI")]
+    public Image bannerImage;
+    public Sprite[] bannerSprites;
+
+    [Header("Settings")]
+    public float switchTime = 5f;
+    public float swipeThreshold = 50f;
+
     private int currentIndex = 0;
     private float timer = 0f;
-    public float switchTime = 5f;
+
+    private bool dragging = false;
+    private Vector2 dragStart;
+    private float dragDelta;
 
     void Start()
     {
@@ -17,18 +26,65 @@ public class CarouselController : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= switchTime)
+        if (!dragging)
         {
-            timer = 0f;
-            currentIndex = (currentIndex + 1) % banners.Length;
-            ShowBanner(currentIndex);
+            timer += Time.deltaTime;
+            if (timer >= switchTime)
+            {
+                timer = 0f;
+                Next();
+            }
         }
     }
 
     void ShowBanner(int index)
     {
-        for (int i = 0; i < banners.Length; i++)
-            banners[i].gameObject.SetActive(i == index);
+        if (bannerSprites.Length == 0 || bannerImage == null)
+            return;
+
+        currentIndex = index;
+
+        bannerImage.sprite = bannerSprites[index];
+        bannerImage.SetNativeSize();
+        RectTransform rt = bannerImage.rectTransform;
+        rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.anchoredPosition = Vector2.zero;
+    }
+
+    public void Next()
+    {
+        ShowBanner((currentIndex + 1) % bannerSprites.Length);
+    }
+
+    public void Prev()
+    {
+        ShowBanner((currentIndex - 1 + bannerSprites.Length) % bannerSprites.Length);
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        dragging = true;
+        dragStart = eventData.position;
+        dragDelta = 0f;
+        timer = 0f;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        dragDelta = eventData.position.x - dragStart.x;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        dragging = false;
+
+        if (Mathf.Abs(dragDelta) < swipeThreshold)
+            return;
+
+        if (dragDelta < 0)
+            Next();
+        else
+            Prev();
     }
 }
