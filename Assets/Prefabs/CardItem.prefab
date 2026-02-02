@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 8360601891572034269}
   - component: {fileID: 7426509430578295876}
   - component: {fileID: 1218675763008344356}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PremiumBadge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8360601891572034269
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25,16 +25,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2472286525841590950}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8424789, y: 0.8424789, z: 0.8424789}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8661967296165403786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -64.2, y: 50}
+  m_AnchoredPosition: {x: -54.3, y: 90.7}
   m_SizeDelta: {x: 169, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7426509430578295876
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 8775685077272865247}
   - component: {fileID: 8381401981074209578}
   - component: {fileID: 5453017874664689446}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,17 +100,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6072378605579949759}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.27822027, y: 0.27822027, z: 0.27822027}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8661967296165403786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.09431251, y: 0.089562505}
+  m_AnchorMax: {x: 0.912125, y: 0.91356254}
+  m_AnchoredPosition: {x: -2.0039368, y: -1.0038452}
+  m_SizeDelta: {x: 1423.3, y: 1419.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8381401981074209578
 CanvasRenderer:
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 273f474a7b3f6024e81a72852f47df2a, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -163,7 +163,8 @@ GameObject:
   - component: {fileID: 5265503622045687660}
   - component: {fileID: 9051127284989923434}
   - component: {fileID: 4576111802821526892}
-  m_Layer: 0
+  - component: {fileID: 6471678865636397214}
+  m_Layer: 5
   m_Name: CardItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8d974b3bfdabf644f8fa183f6ae2d529, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -286,7 +287,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardImage: {fileID: 5453017874664689446}
-  loadingSpinner: {fileID: 0}
-  placeholderSprite: {fileID: 0}
   premiumBadge: {fileID: 2472286525841590950}
   index: -1
+--- !u!114 &6471678865636397214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494644127164347544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
